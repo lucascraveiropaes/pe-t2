@@ -33,17 +33,17 @@ void orderArray(int *array, int start, int end, char arrayName) {
 
 	if (start < end) {
     	temp = breakArray(array, start, end);
-		orderArray(array, start, temp-1, arrayName);
-    	orderArray(array, temp+1, end, arrayName);
+			orderArray(array, start, temp-1, arrayName);
+			orderArray(array, temp+1, end, arrayName);
 	}
 }
 
 int breakArray(int *array, int start, int end) {
 	int temp = array[start], i = start, j, aux;
 
-	for(j = start+1; j <= end; j++) {
+	for(j = start+1; j < end; j++) {
 
-		if(array[j] <= temp) {
+		if(array[j] >= temp) {
 			i++;
 
 			aux = array[i];
