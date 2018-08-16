@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <limits.h>
 #include <time.h>
 
 #define A_LIMIT 5000
