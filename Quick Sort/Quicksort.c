@@ -1,3 +1,4 @@
+//Nícolas Ferreira, Lucas Craveiro, Matheus Almeida, Lucas de Figueiredo
 #include <stdio.h>
 #include <time.h>
 

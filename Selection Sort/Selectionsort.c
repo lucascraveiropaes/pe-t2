@@ -1,3 +1,4 @@
+//NÃ­colas Ferreira, Lucas Craveiro, Matheus Almeida, Lucas de Figueiredo
 #include <stdio.h>
 #include <time.h>
 
@@ -9,25 +10,25 @@
 void readArray(int* origin_array, char filename[50], char arrayName) {
 	char line[30], value[30];
 	FILE *fptr = fopen(filename, "r");
-	
+
 	if(fptr == NULL) {
-		printf("Não foi possível abrir o arquivo de arrays.\n");
+		printf("Nï¿½o foi possï¿½vel abrir o arquivo de arrays.\n");
 	} else {
 		while(fgets(line, 30, fptr) != NULL) {
 			sscanf(line, "%s\n", value);
-			
+
 			*origin_array = atoi(value);
 			origin_array++;
 		}
 		printf("Array %c criado com sucesso.\n", arrayName);
 	}
-	
+
 	fclose(fptr);
 }
 
 void orderArray(int* array, int limit, char arrayName) {
 	int i, j, temp;
-	
+
 	for(i = 0; i < limit; i++) {
 		for(j = i+1; j < limit; j++) {
 			if(*(array+i) < *(array+j)) {
@@ -45,42 +46,42 @@ void saveOrderedArray(int* origin_array, int limit, char filename[50], char arra
 	int* array = origin_array;
 	int i;
 	FILE *fptr = fopen(filename, "w");
-	
+
 	if(fptr == NULL) {
-		printf("Não foi possível salvar o array ordenado.\n\n");
+		printf("Nï¿½o foi possï¿½vel salvar o array ordenado.\n\n");
 	} else {
 		for (i = 0; i < limit; i++) {
 			fprintf(fptr,"%d\n", *array);
 			array++;
 		}
-		
+
 		printf("Array %c salvo com sucesso.\n", arrayName);
 	}
-	
+
 	fclose(fptr);
 }
 
 void executeFunctions(int* array, char basefile[50], char exitfile[50], int limit, char arrayName) {
 	clock_t start, end;
-    
+
     start = clock();
-     
+
 	readArray(array, basefile, arrayName);
 	orderArray(array, limit, arrayName);
 	saveOrderedArray(array, limit, exitfile, arrayName);
-	
+
 	end = clock();
 	double finalTime = ((double) (end - start)) / CLOCKS_PER_SEC;
-	
+
 	printf("Tempo usado: %f\n\n", finalTime);
-	
+
 }
 
 int main() {
 	int A[A_LIMIT], B[B_LIMIT], C[C_LIMIT], D[D_LIMIT], i;
-	
+
 	executeFunctions(A, "../A.txt", "Ordenado-A.txt", A_LIMIT, 'A');
 	executeFunctions(B, "../B.txt", "Ordenado-B.txt", B_LIMIT, 'B');
 	executeFunctions(C, "../C.txt", "Ordenado-C.txt", C_LIMIT, 'C');
-	executeFunctions(D, "../D.txt", "Ordenado-D.txt", D_LIMIT, 'D');	
+	executeFunctions(D, "../D.txt", "Ordenado-D.txt", D_LIMIT, 'D');
 }
